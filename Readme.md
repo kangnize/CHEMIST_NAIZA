@@ -15,13 +15,15 @@
    pip install -r requirements.txt
    ```
 4. Create a `.env` file in the root folder with the structure of `.env.example`
+5. How to run the app
+   - TODO: Add steps
 
 ## GITIGNORE
 Ignore files that are not required e.g. secret files, dependencies' libraries
 
 
 ## Virtual Environment
-#### Create a virtual environment
+### Create a virtual environment
 ```sh
 # Create new virtual environment
 python3 -m venv venv
@@ -31,8 +33,8 @@ python3 -m pip install xyz
 # Activate an existing virtual environment
 source venv/bin/activate
 ```
-#### Shows packages in venv
+### Shows packages in venv
 `pip list`
 
-#### Install all dependencies
+### Install all dependencies
 `pip install -r requirements.txt`
