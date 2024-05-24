@@ -1,7 +1,7 @@
-from flask import Flask, render_template, redirect, url_for, session, flash, Blueprint
+from flask import render_template, redirect, url_for, session, flash, Blueprint
 import bcrypt
 from app import mysql, app
-from .forms import LoginForm, RegisterForm
+from forms import LoginForm, RegisterForm
 
 auth_bp = Blueprint('auth', __name__)
 
@@ -26,10 +26,10 @@ def login():
             session['user_name'] = user[1]
             session['user_email'] = user[2]
             flash("Login successful.", "success")
-            return redirect(url_for('dashboard'))
+            return redirect(url_for('dashboard.dashboard'))
         else:
             flash("Invalid email or password. Please try again.", "danger")
-            return redirect(url_for('login'))
+            return redirect(url_for('auth.login'))
 
     return render_template('login.html', form=form)
 
@@ -51,10 +51,10 @@ def register():
         except Exception as e:
             flash("An error occurred during registration. Please try again.", "danger")
             app.logger.error("Failed to register user: %s", e)
-            return redirect(url_for('register'))
+            return redirect(url_for('auth.register'))
 
         flash("Registration successful. Please log in.", "success")
-        return redirect(url_for('login'))
+        return redirect(url_for('auth.login'))
 
     return render_template('register.html', form=form)
 
@@ -64,4 +64,4 @@ def logout():
     session.pop('user_name', None)
     session.pop('user_email', None)
     flash("You have been logged out.", "info")
-    return redirect(url_for('index'))
+    return redirect(url_for('auth.index'))

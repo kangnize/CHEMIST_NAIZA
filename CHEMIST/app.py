@@ -2,9 +2,6 @@ from flask import Flask
 from flask_mysqldb import MySQL
 from dotenv import load_dotenv
 
-from auth import auth_bp
-from products import products_bp
-
 import os
 
 app = Flask(__name__)
@@ -19,9 +16,17 @@ app.secret_key = os.getenv('SECRET_KEY')
 
 mysql = MySQL(app)
 
-# Register routes
-app.register_blueprint(auth_bp, url_prefix='/auth')
-app.register_blueprint(products_bp, url_prefix='/products')
-
 if __name__ == '__main__':
+    from auth import auth_bp
+    from products import products_bp
+    from dashboard import dashboard_bp
+
+    # Register routes
+    # app.register_blueprint(auth_bp, url_prefix='/auth')
+    # app.register_blueprint(products_bp, url_prefix='/products')
+
+    app.register_blueprint(auth_bp)
+    app.register_blueprint(products_bp)
+    app.register_blueprint(dashboard_bp)
+
     app.run(debug=True)

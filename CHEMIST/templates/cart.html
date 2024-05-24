@@ -43,7 +43,7 @@
             <a class="nav-link" href="{{ url_for('index') }}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('products') }}">Add Cart</a>
+            <a class="nav-link" href="{{ url_for('products.products') }}">Add Cart</a>
           </li>
         </ul>
       </div>
@@ -79,7 +79,7 @@
                     class="form-control" min="1" readonly>
                 </td>
                 <td>
-                  <form action="{{ url_for('update_cart') }}" method="post" id="update_form_{{ product_id }}">
+                  <form action="{{ url_for('products.update_cart') }}" method="post" id="update_form_{{ product_id }}">
                     <input type="hidden" name="product_id" value="{{ product_id }}">
                     <input type="number" name="quantity" id="update_quantity_{{ product_id }}"
                       value="{{ details.quantity }}" min="1">
@@ -90,7 +90,7 @@
                   </form>
                 </td>
                 <td>
-                  <form action="{{ url_for('delete_item', product_id=product_id) }}" method="post">
+                  <form action="{{ url_for('products.delete_item', product_id=product_id) }}" method="post">
                     <button type="submit" class="btn btn-danger">Delete</button>
                   </form>
                 </td>
