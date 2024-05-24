@@ -32,10 +32,10 @@
             <a class="nav-link" href="{{ url_for('index') }}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('view_cart') }}">View Cart</a>
+            <a class="nav-link" href="{{ url_for('products.view_cart') }}">View Cart</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('add_product') }}">Add Product</a>
+            <a class="nav-link" href="{{ url_for('products.add_product') }}">Add Product</a>
           </li>
         </ul>
       </div>
@@ -54,7 +54,7 @@
           <div class="card-body">
             <h5 class="card-title">{{ product['name'] }}</h5>
             <p class="card-text">Ksh.{{ product['price'] }}</p>
-            <form action="{{ url_for('add_to_cart', product_id=product_id) }}" method="post">
+            <form action="{{ url_for('products.add_to_cart', product_id=product_id) }}" method="post">
               <!-- Form to add product to cart -->
               <input type="hidden" name="quantity" value="1"> <!-- Default quantity is 1 -->
               <button type="submit" class="btn btn-primary">Add to Cart</button> <!-- Add to Cart Button -->
