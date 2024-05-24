@@ -16,7 +16,10 @@
    ```
 4. Create a `.env` file in the root folder with the structure of `.env.example`
 5. How to run the app
-   - TODO: Add steps
+   
+   a. Run `python3 CHEMIST/app.py`
+
+   b. Open http://127.0.0.1:5000
 
 ## GITIGNORE
 Ignore files that are not required e.g. secret files, dependencies' libraries
